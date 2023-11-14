@@ -137,7 +137,7 @@ const JeuDeLaVie = () => {
           Arrêter
         </button>
         <button
-          className="bg-sky-600 min-w-[200px] min-h-[50px] text-white px-4 py-1 text-xl rounded-lg"
+          className="bg-green-600 min-w-[200px] min-h-[50px] text-white px-4 py-1 text-xl rounded-lg"
           onClick={etapeSuivante}
         >
           Suivant
