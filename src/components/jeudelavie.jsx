@@ -103,16 +103,16 @@ const JeuDeLaVie = () => {
 
   return (
     <div className="py-3 px-10 md:w-full W-fit gap-x-5 md:h-screen h-fit bg-yellow-500 flex flex-row items-center">
-      <div className="h-fit p-8">
+      <div className="  h-fit p-8">
         {grille.map((ligne, i) => (
-          <div key={i} style={{ display: "flex" }}>
+          <div className=""  key={i} style={{background:"black", display: "flex" }}>
             {ligne.map((cellule, j) => (
               <div
                 key={j}
                 style={{
                   width: 20,
                   height: 20,
-                  backgroundColor: cellule ? "black" : "white",
+                  backgroundColor: cellule ? "white" : "black",
                   border: "1px solid gray",
                   cursor: !enCours ? "pointer" : "default",
                 }}
