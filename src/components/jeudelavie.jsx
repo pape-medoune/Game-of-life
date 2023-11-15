@@ -102,8 +102,8 @@ const JeuDeLaVie = () => {
   };
 
   return (
-    <div className="py-3 px-10 md:w-full W-fit gap-x-5 md:h-screen h-fit bg-yellow-500 flex flex-row items-center">
-      <div className="  h-fit p-8">
+    <div className="py-3 px-10 md:w-full W-fit gap-x-5  md:h-screen h-fit bg-[#171717] justify-around flex flex-row items-center">
+      <div className="shadow-lg  h-fit border-white border-2">
         {grille.map((ligne, i) => (
           <div className=""  key={i} style={{background:"black", display: "flex" }}>
             {ligne.map((cellule, j) => (
@@ -123,10 +123,10 @@ const JeuDeLaVie = () => {
         ))}
       </div>
       <div
-        className="w-[300px] px-5 py-3 h-[500px] flex flex-col flex-wrap justify-around rounded-xl items-center bg-black"
-        style={{ marginBottom: "10px" }}
+        className="w-[300px] shadow-lg px-5 py-3 h-[500px] flex flex-col flex-wrap justify-around rounded-xl items-center "
+        style={{ marginBottom: "10px" ,backgroundColor:"yellow"}}
       >
-        <h1 className="texte text-2xl uppercase text-white">Jeu de la vie</h1>
+        <h1 className="texte text-2xl uppercase text-black">Jeu de la vie</h1>
         <button
           className="bg-sky-600 min-w-[200px] min-h-[50px] text-white px-4 py-1 text-xl rounded-lg"
           onClick={demarrerJeu}
