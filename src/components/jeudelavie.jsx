@@ -112,7 +112,7 @@ const JeuDeLaVie = () => {
                 style={{
                   width: 20,
                   height: 20,
-                  backgroundColor: cellule ? "white" : "black",
+                  backgroundColor: cellule ? "yellow" : "black",
                   border: "1px solid gray",
                   cursor: !enCours ? "pointer" : "default",
                 }}
