@@ -27,45 +27,53 @@ const JeuDeLaVie = () => {
   const [enCours, setEnCours] = useState(false);
 
   const etapeSuivante = () => {
-    const nouvelleGrille = creerGrilleVide();
-
-    for (let i = 0; i < nombreLignes; i++) {
-      for (let j = 0; j < nombreColonnes; j++) {
-        const voisins = [
-          grille[i - 1]?.[j - 1],
-          grille[i - 1]?.[j],
-          grille[i - 1]?.[j + 1],
-          grille[i]?.[j - 1],
-          grille[i]?.[j + 1],
-          grille[i + 1]?.[j - 1],
-          grille[i + 1]?.[j],
-          grille[i + 1]?.[j + 1],
-        ].filter((voisin) => voisin !== undefined);
-
-        const nombreVoisinsVivants = voisins.reduce(
-          (acc, cellule) => acc + cellule,
-          0
-        );
-
-        if (grille[i][j] === 1) {
-          if (nombreVoisinsVivants === 2 || nombreVoisinsVivants === 3) {
-            nouvelleGrille[i][j] = 1;
-          }
-        } else {
-          if (nombreVoisinsVivants === 3) {
-            nouvelleGrille[i][j] = 1;
+    setGrille((grille) => {
+      const nouvelleGrille = creerGrilleVide();
+  
+      for (let i = 0; i < nombreLignes; i++) {
+        for (let j = 0; j < nombreColonnes; j++) {
+          const voisins = [
+            grille[i - 1]?.[j - 1],
+            grille[i - 1]?.[j],
+            grille[i - 1]?.[j + 1],
+            grille[i]?.[j - 1],
+            grille[i]?.[j + 1],
+            grille[i + 1]?.[j - 1],
+            grille[i + 1]?.[j],
+            grille[i + 1]?.[j + 1],
+          ].filter((voisin) => voisin !== undefined);
+  
+          const nombreVoisinsVivants = voisins.reduce(
+            (acc, cellule) => acc + cellule,
+            0
+          );
+  
+          if (grille[i][j] === 1) {
+            if (nombreVoisinsVivants === 2 || nombreVoisinsVivants === 3) {
+              nouvelleGrille[i][j] = 1;
+            }
+          } else {
+            if (nombreVoisinsVivants === 3) {
+              nouvelleGrille[i][j] = 1;
+            }
           }
         }
       }
-    }
-
-    setGrille(nouvelleGrille);
+  
+      return nouvelleGrille;
+    });
   };
+  
 
   useEffect(() => {
     let intervalId;
+
+    const autoStep = () => {
+      etapeSuivante();
+    };
+
     if (enCours) {
-      intervalId = setInterval(etapeSuivante, 10);
+      intervalId = setInterval(autoStep, 100);
     }
 
     return () => clearInterval(intervalId);
@@ -81,12 +89,7 @@ const JeuDeLaVie = () => {
 
   const demarrerJeu = (e) => {
     e.preventDefault();
-    setEnCours(true);
-    window.alert(
-      "Appuyer s'il vous plaît sur le button SUIVANT pour suivre l'évolution "
-    );
-
-    window.location.reload(false);
+    setEnCours(true); 
   };
 
   const arreterJeu = () => {
@@ -154,3 +157,4 @@ const JeuDeLaVie = () => {
 };
 
 export default JeuDeLaVie;
+
